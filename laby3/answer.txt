@@ -1,0 +1,2 @@
+Overfitting jest niedobry, gdyż może to skutkować utworzeniem się modelu który działa bardzo dobrze na danych
+treningowych, ale gdy podamy mu dane inne, spoza zbioru na którym go uczyliśmy to nie jest on w stanie z nimi dobrze poradzić.
