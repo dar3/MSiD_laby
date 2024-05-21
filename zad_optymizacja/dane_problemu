@@ -1,20 +1,24 @@
 Zmienne decyzyjne:
 
-    x_1: liczba kilogramów tuszek budżetowych
-    x_2: liczba kilogramów tuszek tradycyjnych
+x_1: liczba kilogramów tuszek budżetowych
+x_2: liczba kilogramów tuszek tradycyjnych
 
 Funkcja celu:
 
 Celem jest maksymalizacja zysku. Zysk z produkcji to:
 income(x1,x2)=25x2 + 13x1
+
 Ograniczenia:
 
-    Ilość mięsa:
-    1/2 x1 + 9/10 x2 <= 1000
-    Ilość wypełniacza:
-    1/3 x1 <= 500
-    Ilość soli:
-    1/6 x1 + 1/10 x2 <= 250
-    Warunek dotyczacy zmiennych decyzyjnych (nie mogą być ujemne):
-    x1 >= 0
-    x2 >= 0
+Ilość mięsa:
+1/2 x1 + 9/10 x2 <= 1000
+
+Ilość wypełniacza:
+1/3 x1 <= 500
+
+Ilość soli:
+1/6 x1 + 1/10 x2 <= 250
+
+Warunek dotyczacy zmiennych decyzyjnych (nie mogą być ujemne):
+x1 >= 0
+x2 >= 0
