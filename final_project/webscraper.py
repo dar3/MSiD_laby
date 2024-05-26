@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 # URL of the weather history page for Wrocław for January 2022
+# it does not work properly. Need to use tool which runs JavaScript code and only after that downloads webpage code
 url = 'https://www.wunderground.com/history/monthly/pl/wroc%C5%82aw/EPWR/date/2022-1'
 
 # Send a GET request to the webpage
