@@ -1,28 +1,52 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
+import pandas as pd
 
-# URL strony, którą chcemy zeskrobać
-url = 'https://dar3.eu/'
+# URL of the weather history page for Wrocław for January 2022
+url = 'https://www.wunderground.com/history/monthly/pl/wroc%C5%82aw/EPWR/date/2022-1'
 
-# Pobierz stronę
+# Send a GET request to the webpage
 response = requests.get(url)
 
-# Sprawdź, czy pobranie się powiodło
+# Check if the request was successful
 if response.status_code == 200:
-    page_content = response.text
-    # Parsuj stronę
-    soup = BeautifulSoup(page_content, 'html.parser')
+    # Parse the webpage content
+    soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Wyodrębnij nagłówki
-    headers = soup.find_all('h1')
-    data = [header.text for header in headers]
+    # Initialize lists to hold dates and average temperatures
+    dates = []
+    avg_temps = []
 
-    # Zapisz dane do pliku CSV
-    with open('output.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(['Header'])
-        for row in data:
-            writer.writerow([row])
+    # Find the table that contains the average temperature data
+    table = soup.find('table', {'class': 'days ng-star-inserted'})
+
+    if table:
+        # Extract all rows from the table
+        rows = table.find_all('tr')
+
+        # Iterate over the rows to find the cells with temperature data
+        for row in rows:
+            cells = row.find_all('td', class_='ng-star-inserted')
+            if len(cells) >= 1:  # Check if the row has the correct number of cells
+                # Extract date and temperature
+                date_cell = row.find('tr').get_text(strip=True)  # Date is usually in the <th> tag
+                avg_temp = cells[0].get_text(strip=True)  # Adjust the index based on the cell position
+
+                # Append the data to lists
+                dates.append(date_cell)
+                avg_temps.append(avg_temp)
+
+        # Create a DataFrame from the data
+        data = pd.DataFrame({
+            'Date': dates,
+            'Avg Temperature': avg_temps
+        })
+
+        # Save DataFrame to CSV
+        data.to_csv('avg_temperatures.csv', index=False)
+
+        print('Data has been saved to avg_temperatures.csv')
+    else:
+        print('Could not find the table with average temperature data.')
 else:
-    print(f"Failed to retrieve the page. Status code: {response.status_code}")
+    print(f'Failed to retrieve the page. Status code: {response.status_code}')
