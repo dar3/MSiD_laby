@@ -7,3 +7,6 @@ Also you need to download chrome_driver.exe from there https://googlechromelabs.
 2. Put correct path to chromedriver.exe in webscraper.py file and run it. Wait till all the data will be downloaded.
 3. Run all_together.py
 4. Finally run test_reg_solution.py and see the results.
+
+**OR if you only want to see the final results with charts** 
+you just need to download all_converted_data.csv file and run test_reg_solution.py
