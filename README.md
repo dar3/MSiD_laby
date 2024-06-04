@@ -9,5 +9,6 @@ Also you need to download chrome_driver.exe from there https://googlechromelabs.
 4. Finally run test_reg_solution.py and see the results.
 ---------------------------------------------------------------------------------
 *TLDR*
+
 **OR if you only want to see the final results with charts** 
-you just need to download all_converted_data.csv file and run test_reg_solution.py
+you just need to download: all_converted_data.csv file and run test_reg_solution.py
