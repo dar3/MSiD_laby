@@ -36,7 +36,7 @@ def scrap_temp_humidity_wind(year):
 
         # Setting up Selenium WebDriver (you need to download chromedriver and give a path to it on your drive below)
         service = Service(
-            "C:\\Install\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe")
+            "C:\\chrome_driver\\chromedriver.exe")
         driver = webdriver.Chrome(service=service)
         try:
             month = get_year_month_from_url(url)
